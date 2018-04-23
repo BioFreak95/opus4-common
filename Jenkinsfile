@@ -40,7 +40,7 @@ pipeline {
                 step([
                     $class: 'CloverPublisher',
                     cloverReportDir: 'build',
-                    cloverReportFileName: 'build/coverage/clover.xml'
+                    cloverReportFileName: 'coverage/clover.xml'
                 ])
             }
         }
