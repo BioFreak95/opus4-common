@@ -21,12 +21,16 @@ pipeline {
         always {
             step([
                 $class: 'JUnitResultArchiver',
-                testResults: 'build/logs/phpunit.xml'
+                testResults: 'build/phpunit.xml'
+            ])
+            step([
+                $class: 'hudson.plugins.checkstyle.CheckStylePublisher',
+                pattern: 'build/checkstyle.xml'
             ])
             step([
                 $class: 'CloverPublisher',
                 cloverReportDir: 'build/coverage/',
-                cloverReportFileName: 'phpunit.coverage.xml"'
+                cloverReportFileName: 'clover.xml'
             ])
         }
     }
