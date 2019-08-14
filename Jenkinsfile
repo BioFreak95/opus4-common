@@ -19,17 +19,15 @@ pipeline {
 
     post {
         always {
-            steps{
-                step([
-                    $class: 'JUnitResultArchiver',
-                    testResults: 'build/logs/phpunit.xml'
-                ])
-                step([
-                    $class: 'CloverPublisher',
-                    cloverReportDir: 'build/coverage/',
-                    cloverReportFileName: 'phpunit.coverage.xml"'
-                ])
-            }
+            step([
+                $class: 'JUnitResultArchiver',
+                testResults: 'build/logs/phpunit.xml'
+            ])
+            step([
+                $class: 'CloverPublisher',
+                cloverReportDir: 'build/coverage/',
+                cloverReportFileName: 'phpunit.coverage.xml"'
+            ])
         }
     }
 }
