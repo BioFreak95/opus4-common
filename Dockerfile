@@ -9,6 +9,5 @@ RUN apt-get install -y composer zip
 # Install PHP with necessary packages for Opus4
 RUN apt-get install -y php\
     php-cli\
-    php-common\
     php-dev\
     php-xdebug
