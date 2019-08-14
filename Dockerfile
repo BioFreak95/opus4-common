@@ -9,4 +9,8 @@ RUN apt-get install -y composer curl
 # Install PHP with necessary packages for Opus4
 RUN apt-get install -y php\
     php-cli\
+    php-common\
+    php-curl\
+    php-dev\
+    php-log\
     php-xdebug
