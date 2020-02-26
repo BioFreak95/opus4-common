@@ -12,12 +12,6 @@ jobs:
 
     - name: Composer install
       run: curl -s http://getcomposer.org/installer | php && php composer.phar self-update && php composer.phar install
-    
-    - name: Install Pecl
-      run: sudo apt-get update && sudo apt-get install -y php php-cli php-dev php-xdebug php-pear
-    
-    - name: XDebug 
-      run: pecl install xdebug-2.8.0 && echo "zend_extension=/usr/lib/php/20151012/xdebug.so" >> /etc/php/7.0/cli/php.ini
 
     - name: Test
       run: php composer.phar check-full
