@@ -10,14 +10,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate
+    - name: Composer install
+      run: curl -s http://getcomposer.org/installer | php && php composer.phar self-update && php composer.phar install
+    
+    - name: XDebug 
+      run: pecl install xdebug-2.8.0 && echo "zend_extension=/usr/lib/php/20151012/xdebug.so" >> /etc/php/7.0/cli/php.ini
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
-
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-    - name: Run test suite
-      run: composer test
+    - name: Test
+      run: php composer.phar check-full
