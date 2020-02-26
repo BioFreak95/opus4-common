@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: PHP
-      run: ls /usr/bin/php* && php --version && sudo a2dismod php7.4 && sudo a2enmod php7.0 && sudo systemctl restart apache2
+      run: ls /usr/bin/php* && sudo update-alternatives --set php /usr/bin/php7.0 && php --version && sudo a2dismod php7.4 && sudo a2enmod php7.0 && sudo systemctl restart apache2
     
     - name: Install
       run: sudo apt-get update && sudo apt-get install -y composer zip sudo php7.0 php7.0-cli php7.0-dev php7.0-xdebug
