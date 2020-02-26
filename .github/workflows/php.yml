@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Install
-      run: sudo apt-get update && sudo apt-get install -y composer zip sudo php php-cli php-dev php-xdebug
+      run: lsb_release -a && sudo apt-get update && sudo apt-get install -y composer zip sudo php7.0 php7.0-cli php7.0-dev php7.0-xdebug
 
     - name: Composer install
       run: curl -s http://getcomposer.org/installer | php && php composer.phar self-update && php composer.phar install
