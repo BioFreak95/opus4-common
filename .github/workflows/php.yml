@@ -9,6 +9,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Install
+      run: sudo apt-get update && sudo apt-get install -y composer zip sudo php php-cli php-dev php-xdebug
 
     - name: Composer install
       run: curl -s http://getcomposer.org/installer | php && php composer.phar self-update && php composer.phar install
