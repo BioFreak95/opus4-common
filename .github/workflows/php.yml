@@ -10,11 +10,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: PHP
+      run: php --version && sudo a2dismod php7.4 && sudo a2enmod php7.0 && sudo systemctl restart apache2
+    
     - name: Install
-      run: lsb_release -a && sudo apt-get update && sudo apt-get install -y composer zip sudo php7.0 php7.0-cli php7.0-dev php7.0-xdebug
+      run: sudo apt-get update && sudo apt-get install -y composer zip sudo php7.0 php7.0-cli php7.0-dev php7.0-xdebug
 
     - name: Composer install
       run: curl -s http://getcomposer.org/installer | php && php composer.phar self-update && php composer.phar install
 
     - name: Test
-      run: php --version && php composer.phar check-full
+      run: php composer.phar check-full
